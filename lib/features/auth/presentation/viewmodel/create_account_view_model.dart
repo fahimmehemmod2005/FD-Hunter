@@ -1,13 +1,41 @@
 import 'package:flutter/cupertino.dart';
 
-class LoginViewModel extends ChangeNotifier {
+class CreateAccountViewModel extends ChangeNotifier {
   bool _isPasswordHidden = true;
+  bool _isConfirmHidden = true;
+
   bool get isPasswordHidden => _isPasswordHidden;
+  bool get isConfirmHidden => _isConfirmHidden;
 
   void togglePassword() {
     _isPasswordHidden = !_isPasswordHidden;
     notifyListeners();
   }
+
+  void toggleConfirm() {
+    _isConfirmHidden = !_isConfirmHidden;
+    notifyListeners();
+  }
+
+  // Full Name Validator
+  String? validateFullName(String? name) {
+    if (name == null || name.trim().isEmpty) {
+      return 'Full name is required';
+    }
+
+    if (name.trim().length < 3) {
+      return 'Name must be at least 3 characters';
+    }
+
+    // only letters and space
+    final nameRegex = RegExp(r'^[a-zA-Z\s]+$');
+    if (!nameRegex.hasMatch(name.trim())) {
+      return 'Name can only contain letters and spaces';
+    }
+
+    return null;
+  }
+
 
   // Email Validator
   String? validateEmail(String? email) {
@@ -33,19 +61,11 @@ class LoginViewModel extends ChangeNotifier {
   }
 
   // Confirm Password Validator
-  /*  String? validateConfirmPassword(String? confirmPassword, String password) {
+  String? validateConfirmPassword(String? confirmPassword, String password) {
     if (confirmPassword == null || confirmPassword.isEmpty) {
       return 'Confirm Password is required';
     }
     if (confirmPassword != password) return 'Passwords do not match';
     return null;
-  }*/
-
-  bool _isChecked = false;
-  bool get isChecked => _isChecked;
-
-  void toggle(bool? value) {
-    _isChecked = value ?? false;
-    notifyListeners();
   }
 }

@@ -1,0 +1,90 @@
+import 'package:fdahunter/core/constant/app_size_box.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../core/constant/app_color.dart';
+import '../../core/constant/app_text_styles.dart';
+
+class InputField extends StatelessWidget {
+  final String? topLabel;
+  final String? hintText;
+  final IconData? icon;
+  final void Function()? onTap;
+  final Widget? prefixIcon;
+  final EdgeInsetsGeometry? contentPadding;
+  final double? height;
+  final int? maxLine;
+  final TextEditingController? controller;
+  final VoidCallback? onSuffixTap;
+  final String? Function(String?)? validator;
+  final bool obscureText;
+
+  const InputField({
+    super.key,
+    this.hintText,
+    this.contentPadding,
+    this.height,
+    this.maxLine,
+    this.controller,
+    this.topLabel,
+    this.onSuffixTap,
+    this.prefixIcon,
+    this.validator,
+    this.icon,
+    this.onTap,
+    this.obscureText = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (topLabel != null)
+          Text(
+            topLabel!,
+            style: AppTextStyles.size14w600(color: AppColor.label),
+          ),
+        AppSizeBox.height5,
+
+        TextFormField(
+          obscureText: obscureText,
+          cursorColor: Colors.white,
+          validator: validator,
+          controller: controller,
+          maxLines: maxLine,
+          style: const TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: AppColor.input.withAlpha(20),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12.r),
+              borderSide: BorderSide.none,
+            ),
+
+            prefixIcon: prefixIcon,
+            suffixIcon: icon == null
+                ? null
+                : IconButton(
+              icon: Icon(icon, color: Colors.white24),
+              onPressed: onTap,
+            ),
+
+            hintText: hintText,
+            hintStyle: AppTextStyles.size14w400(color: AppColor.label),
+            contentPadding: contentPadding ??
+                const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+
+            errorStyle:  TextStyle(
+              color: Colors.red,
+              fontSize: 12,
+              height: 1.2,
+            ),
+            errorMaxLines: 2,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
