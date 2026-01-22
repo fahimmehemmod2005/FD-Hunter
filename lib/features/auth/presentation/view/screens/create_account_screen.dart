@@ -104,7 +104,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                         label: "Continue",
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
-                            //Navigator.pushReplacementNamed(context, RouteName.loginScreen);
+                            Navigator.pushReplacementNamed(context, RouteName.categoryScreen);
                             print('Name: ${_name.text}');
                             print('Email: ${_email.text}');
                             print('Password: ${_password.text}');

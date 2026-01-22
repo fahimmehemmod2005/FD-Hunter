@@ -1,3 +1,4 @@
+import 'package:fdahunter/features/auth/presentation/viewmodel/category_view_model.dart';
 import 'package:fdahunter/features/auth/presentation/viewmodel/create_account_view_model.dart';
 import 'package:fdahunter/features/auth/presentation/viewmodel/login_view_model.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +10,8 @@ class AppViewModels {
       create: (_) => LoginViewModel(),
     ),ChangeNotifierProvider<CreateAccountViewModel>(
       create: (_) => CreateAccountViewModel(),
+    ),ChangeNotifierProvider<CategoryViewModel>(
+      create: (_) => CategoryViewModel(),
     ),
   ];
 }

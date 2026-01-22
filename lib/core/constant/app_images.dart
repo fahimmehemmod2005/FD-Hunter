@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 class AppImages {
   AppImages._();

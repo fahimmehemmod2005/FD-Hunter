@@ -1,7 +1,7 @@
+import 'package:fdahunter/features/auth/presentation/view/screens/category_screen.dart';
 import 'package:fdahunter/features/auth/presentation/view/screens/create_account_screen.dart';
 import 'package:fdahunter/features/auth/presentation/view/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-
 import '../../features/splash/splash_screen.dart';
 import 'route_name.dart';
 
@@ -18,6 +18,7 @@ class AppRoutes {
     // auth screen
     RouteName.loginScreen: (context) => const LoginScreen(),
     RouteName.createAccountScreen: (context) => const CreateAccountScreen(),
+    RouteName.categoryScreen: (context) => const CategoryScreen(),
 
   };
 }
