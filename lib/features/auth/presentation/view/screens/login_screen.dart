@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      AppSizeBox.height30,
+                      AppSizeBox.height50,
 
                       // --------------- title and subtitle --------------
                       TitleSubtitleBar(
