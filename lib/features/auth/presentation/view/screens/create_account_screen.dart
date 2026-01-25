@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../app/widgets/input_field.dart';
+import 'otp_screen.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({super.key});
@@ -33,6 +34,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
     _rePassword.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
@@ -42,120 +44,143 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
           child: Form(
             key: _formKey,
             child: Consumer<CreateAccountViewModel>(
-                builder: (context, provider, child) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AppSizeBox.height25,
-                      WidgetHeader(),
-                      AppSizeBox.height25,
-                      TitleSubtitleBar(
-                        title: "Create New Account 🔥",
-                        subtitle: 'Please fill your detail information',
-                      ),
+              builder: (context, provider, child) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppSizeBox.height25,
+                    WidgetHeader(),
+                    AppSizeBox.height25,
+                    TitleSubtitleBar(
+                      title: "Create New Account 🔥",
+                      subtitle: 'Please fill your detail information',
+                    ),
 
-                      AppSizeBox.height50,
+                    AppSizeBox.height50,
 
-                      InputField(
-                        height: 50,
-                        topLabel: 'Full Name',
-                        hintText: 'Enter your full name',
-                        maxLine: 1,
-                        controller: _name,
-                        validator: provider.validateFullName,
-                      ),
-                      AppSizeBox.height15,
-                      InputField(
-                        height: 50,
-                        topLabel: 'Email',
-                        hintText: 'Enter your email',
-                        maxLine: 1,
-                        controller: _email,
-                        validator: provider.validateEmail,
-                      ),
-                      AppSizeBox.height15,
-                      InputField(
-                          height: 50,
-                          topLabel: 'Password',
-                          hintText: 'Enter your password',
-                          maxLine: 1,
-                          controller: _password,
-                          validator: provider.validatePassword,
-                          onTap: provider.togglePassword,
-                          obscureText: provider.isPasswordHidden,
-                          icon: provider.isPasswordHidden ? Icons.visibility_outlined : Icons.visibility_off
-                      ),
-                      AppSizeBox.height15,
-                      InputField(
-                          height: 50,
-                          topLabel: 'Confirm password',
-                          hintText: 'Re-enter your password',
-                          maxLine: 1,
-                          controller: _rePassword,
-                          validator: (val) =>provider.validateConfirmPassword(val, _password.text),
-                          onTap: provider.toggleConfirm,
-                          obscureText: provider.isConfirmHidden,
-                          icon: provider.isConfirmHidden ? Icons.visibility_outlined : Icons.visibility_off
-                      ),
+                    InputField(
+                      topLabel: 'Full Name',
+                      hintText: 'Enter your full name',
+                      maxLine: 1,
+                      controller: _name,
+                      validator: provider.validateFullName,
+                    ),
+                    AppSizeBox.height15,
+                    InputField(
+                      topLabel: 'Email',
+                      hintText: 'Enter your email',
+                      maxLine: 1,
+                      controller: _email,
+                      validator: provider.validateEmail,
+                    ),
+                    AppSizeBox.height15,
+                    InputField(
+                      topLabel: 'Password',
+                      hintText: 'Enter your password',
+                      maxLine: 1,
+                      controller: _password,
+                      validator: provider.validatePassword,
+                      onSuffixTap: provider.togglePassword,
+                      obscureText: provider.isPasswordHidden,
+                      icon: provider.isPasswordHidden
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off,
+                    ),
+                    AppSizeBox.height15,
+                    InputField(
+                      topLabel: 'Confirm password',
+                      hintText: 'Re-enter your password',
+                      maxLine: 1,
+                      controller: _rePassword,
+                      validator: (val) =>
+                          provider.validateConfirmPassword(val, _password.text),
+                      onSuffixTap: provider.toggleConfirm,
+                      obscureText: provider.isConfirmHidden,
+                      icon: provider.isConfirmHidden
+                          ? Icons.visibility_outlined
+                          : Icons.visibility_off,
+                    ),
 
-                      AppSizeBox.height20,
+                    AppSizeBox.height20,
 
-                      MainButton(
-                        label: "Continue",
-                        onTap: () {
-                          if (_formKey.currentState!.validate()) {
-                            Navigator.pushReplacementNamed(context, RouteName.categoryScreen);
-                            print('Name: ${_name.text.trim()}');
-                            print('Email: ${_email.text.trim()}');
-                            print('Password: ${_password.text.trim()}');
-                            print('Confirm Password: ${_rePassword.text.trim()}');
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('Account create success.', style: TextStyle(fontSize: 16, color: Colors.black,),),
-                                backgroundColor: AppColor.main,
-                                duration: const Duration(seconds: 2),
-                                behavior: SnackBarBehavior.floating,
-                                margin: const EdgeInsets.all(16),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12),
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 20,
-                                  vertical: 16,
+                    MainButton(
+                      label: "Continue",
+                      onTap: () {
+                        if (_formKey.currentState!.validate()) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (builder) =>
+                                  OtpScreen(from: 'createAccountScreen'),
+                            ),
+                          );
+                          print('Name: ${_name.text.trim()}');
+                          print('Email: ${_email.text.trim()}');
+                          print('Password: ${_password.text.trim()}');
+                          print('Confirm Password: ${_rePassword.text.trim()}');
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Account create success.',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black,
                                 ),
                               ),
-                            );
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: const Text('Account create Failed', style: TextStyle(fontSize: 16, color: Colors.white,),),
-                                backgroundColor: Colors.red.shade700,
-                                duration: const Duration(seconds: 2),
-                                behavior: SnackBarBehavior.floating,
-                                margin: const EdgeInsets.all(16),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16,),
+                              backgroundColor: AppColor.main,
+                              duration: const Duration(seconds: 2),
+                              behavior: SnackBarBehavior.floating,
+                              margin: const EdgeInsets.all(16),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
                               ),
-                            );
-                            print('Account create failed');
-                          }
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                                vertical: 16,
+                              ),
+                            ),
+                          );
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: const Text(
+                                'Account create Failed',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              backgroundColor: Colors.red.shade700,
+                              duration: const Duration(seconds: 2),
+                              behavior: SnackBarBehavior.floating,
+                              margin: const EdgeInsets.all(16),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                                vertical: 16,
+                              ),
+                            ),
+                          );
+                          print('Account create failed');
+                        }
+                      },
+                    ),
+                    AppSizeBox.height25,
+                    Center(
+                      child: CustomRichText(
+                        text1: "Have an account? ",
+                        text2: "Login",
+                        text2Tap: () {
+                          Navigator.pushNamed(context, RouteName.loginScreen);
                         },
                       ),
-                      AppSizeBox.height25,
-                      Center(
-                        child: CustomRichText(
-                          text1: "Have an account? ",
-                          text2: "Login",
-                          text2Tap: (){
-                            Navigator.pushNamed(context, RouteName.loginScreen);
-                          },
-                        ),
-                      ),
-                      AppSizeBox.height10,
-                    ],
-                  );
-                },
+                    ),
+                    AppSizeBox.height10,
+                  ],
+                );
+              },
             ),
           ),
         ),

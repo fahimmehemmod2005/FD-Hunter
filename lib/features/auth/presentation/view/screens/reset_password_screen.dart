@@ -49,25 +49,23 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         ),
                         AppSizeBox.height50,
                         InputField(
-                            height: 50,
                             topLabel: 'Password',
                             hintText: 'Enter your password',
                             maxLine: 1,
                             controller: _password,
                             validator: provider.validatePassword,
-                            onTap: provider.togglePassword,
+                            onSuffixTap: provider.togglePassword,
                             obscureText: provider.isPasswordHidden,
                             icon: provider.isPasswordHidden ? Icons.visibility_outlined : Icons.visibility_off
                         ),
                         AppSizeBox.height15,
                         InputField(
-                            height: 50,
                             topLabel: 'Confirm password',
                             hintText: 'Re-enter your password',
                             maxLine: 1,
                             controller: _rePassword,
                             validator: (val) =>provider.validateConfirmPassword(val, _password.text),
-                            onTap: provider.toggleConfirm,
+                            onSuffixTap: provider.toggleConfirm,
                             obscureText: provider.isConfirmHidden,
                             icon: provider.isConfirmHidden ? Icons.visibility_outlined : Icons.visibility_off
                         ),

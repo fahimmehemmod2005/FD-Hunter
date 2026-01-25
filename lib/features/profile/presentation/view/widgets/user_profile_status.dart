@@ -1,11 +1,12 @@
 import 'package:fdahunter/core/constant/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/constant/app_images.dart';
 import '../../../../../core/constant/app_size_box.dart';
 import '../../../../../core/constant/app_text_styles.dart';
 
-class UserProfile extends StatelessWidget {
-  const UserProfile({
+class UserProfileStatus extends StatelessWidget {
+  const UserProfileStatus({
     super.key,
   });
 
@@ -22,7 +23,7 @@ class UserProfile extends StatelessWidget {
               CircleAvatar(
                 radius: 25,
                 backgroundColor: Colors.white,
-                child: Text('👨', style: TextStyle(fontSize: 22)),
+                child: Image.asset(AppImages.profile,height: 52,width: 52,fit: BoxFit.cover,),
               ),
               Positioned(
                 top: 40,

@@ -9,7 +9,10 @@ import 'package:fdahunter/features/home/view/screen/sports_picks_screen.dart';
 import 'package:fdahunter/features/main_screen/view/main_screen.dart';
 import 'package:fdahunter/features/notification/view/screen/notification_screen.dart';
 import 'package:fdahunter/features/onboarding/view/onboarding_screen.dart';
+import 'package:fdahunter/features/profile/presentation/view/screens/help_and_support_screen.dart';
+import 'package:fdahunter/features/profile/presentation/view/screens/legal_and_policies.dart';
 import 'package:fdahunter/features/profile/presentation/view/screens/profile_screen.dart';
+import 'package:fdahunter/features/profile/presentation/view/screens/user_profile_edit.dart';
 import 'package:fdahunter/features/subscription/view/screen/payment_method_screen.dart';
 import 'package:fdahunter/features/subscription/view/screen/subscription_screen.dart';
 import 'package:fdahunter/features/subscription/view/screen/success_payment_screen.dart';
@@ -32,8 +35,8 @@ class AppRoutes {
     RouteName.createAccountScreen: (context) => const CreateAccountScreen(),
     RouteName.categoryScreen: (context) => const CategoryScreen(),
     RouteName.onboardingScreen: (context) => const OnboardingScreen(),
-    RouteName.forgotScreen: (context) => const ForgotScreen(),
-    RouteName.otpScreen: (context) => const OtpScreen(),
+    RouteName.forgotScreen: (context) => const ForgotScreen(from: '',),
+    RouteName.otpScreen: (context) => const OtpScreen(from: ''),
     RouteName.resetPasswordScreen: (context) => const ResetPasswordScreen(),
     RouteName.mainScreen: (context) => const MainScreen(),
     RouteName.homeScreen: (context) => const HomeScreen(),
@@ -43,6 +46,9 @@ class AppRoutes {
     RouteName.paymentMethodScreen: (context) => const PaymentMethodScreen(),
     RouteName.successPaymentScreen: (context) => const SuccessPaymentScreen(),
     RouteName.profileScreen: (context) => const ProfileScreen(),
+    RouteName.userProfileEdit: (context) => const UserProfileEdit(),
+    RouteName.helpAndSupportScreen: (context) => const HelpAndSupportScreen(),
+    RouteName.legalAndPoliciesScreen: (context) => const LegalAndPolicies(),
 
   };
 }

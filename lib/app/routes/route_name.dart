@@ -16,5 +16,8 @@ class RouteName {
   static const String paymentMethodScreen = '/paymentMethodScreen';
   static const String successPaymentScreen = '/successPaymentScreen';
   static const String profileScreen = '/profileScreen';
+  static const String userProfileEdit = '/userProfileEdit';
+  static const String helpAndSupportScreen = '/helpAndSupportScreen';
+  static const String legalAndPoliciesScreen = '/legalAndPoliciesScreen';
 
 }

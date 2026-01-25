@@ -15,7 +15,8 @@ import '../../../../../core/constant/app_color.dart';
 import '../../../../../core/constant/app_text_styles.dart';
 
 class OtpScreen extends StatefulWidget {
-  const OtpScreen({super.key});
+  final String from;
+  const OtpScreen({super.key,required this.from});
 
   @override
   State<OtpScreen> createState() => _OtpScreenState();
@@ -94,7 +95,11 @@ class _OtpScreenState extends State<OtpScreen> {
                       label: "Continue",
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
-                          Navigator.pushNamed(context, RouteName.resetPasswordScreen);
+                          if(widget.from == 'createAccountScreen'){
+                            Navigator.pushNamed(context, RouteName.categoryScreen);
+                          } else {
+                            Navigator.pushNamed(context, RouteName.resetPasswordScreen);
+                          }
                           print("OTP: ${_pinController.text.trim()}");
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(

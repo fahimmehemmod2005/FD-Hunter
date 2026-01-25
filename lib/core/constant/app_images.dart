@@ -19,4 +19,5 @@ class AppImages {
   static const String master = 'assets/icons/master.png';
   static const String stripe = 'assets/icons/stripe.png';
   static const String success = 'assets/images/success.png';
+  static const String profile = 'assets/images/profile.png';
 }

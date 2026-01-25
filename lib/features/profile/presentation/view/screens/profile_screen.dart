@@ -1,3 +1,4 @@
+import 'package:fdahunter/app/routes/route_name.dart';
 import 'package:fdahunter/app/widgets/widget_header.dart';
 import 'package:fdahunter/core/constant/app_color.dart';
 import 'package:fdahunter/core/constant/app_size_box.dart';
@@ -5,9 +6,12 @@ import 'package:fdahunter/core/constant/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../app/widgets/custom_dialog_box.dart';
+import '../../../../../app/widgets/custom_dialog_box.dart';
 import '../../../../../app/widgets/my_scaffold.dart';
+import '../../../../auth/presentation/view/screens/forgot_screen.dart';
 import '../widgets/settings_list_tile.dart';
-import '../widgets/user_profile.dart';
+import '../widgets/user_profile_status.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -28,8 +32,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               WidgetHeader(title: 'Settings', width: 95.w),
               AppSizeBox.height20,
-              UserProfile(),
-              AppSizeBox.height10,
+              UserProfileStatus(),
+              AppSizeBox.height20,
               Text(
                 "Personal Info",
                 style: AppTextStyles.size16w600(color: AppColor.title),
@@ -38,7 +42,88 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SettingsListTile(
                 title: "Profile",
                 icon1: Icons.person_outline,
-                icon2: Icons.arrow_forward_ios_outlined,
+                onTap: (){
+                  Navigator.pushNamed(context, RouteName.userProfileEdit);
+                },
+              ),
+              AppSizeBox.height25,
+              Text(
+                "Security",
+                style: AppTextStyles.size16w600(color: AppColor.title),
+              ),
+              AppSizeBox.height25,
+              SettingsListTile(
+                title: "Change Password",
+                icon1: Icons.lock_outline_rounded,
+                onTap: (){},
+              ),
+              AppSizeBox.height25,
+              SettingsListTile(
+                title: "Forgot Password",
+                icon1: Icons.lock_outline_rounded,
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (builder) =>
+                          ForgotScreen(from: 'profileScreen'),
+                    ),
+                  );
+                },
+              ),
+              AppSizeBox.height25,
+              SettingsListTile(
+                title: "Security",
+                icon1: Icons.security_outlined,
+                onTap: (){},
+              ),
+              AppSizeBox.height25,
+              Text(
+                "General",
+                style: AppTextStyles.size16w600(color: AppColor.title),
+              ),
+              AppSizeBox.height25,
+              SettingsListTile(
+                title: "Language",
+                icon1: Icons.language_rounded,
+                onTap: (){},
+              ),
+              AppSizeBox.height25,
+              Text(
+                "About",
+                style: AppTextStyles.size16w600(color: AppColor.title),
+              ),
+              AppSizeBox.height25,
+              SettingsListTile(
+                title: "Legal and Policies",
+                icon1: Icons.shield_outlined,
+                onTap: (){
+                  Navigator.pushNamed(context, RouteName.legalAndPoliciesScreen);
+                },
+              ),
+              AppSizeBox.height25,
+              SettingsListTile(
+                title: "Help & Support",
+                icon1: Icons.help_center_outlined,
+                onTap: (){
+                  Navigator.pushNamed(context, RouteName.helpAndSupportScreen);
+                },
+              ),
+              AppSizeBox.height25,
+              SettingsListTile(
+                title: "Logout",
+                color: Colors.red,
+                icon1: Icons.logout_outlined,
+                onTap: (){
+                  showCustomDialog(
+                      title: 'Are you sure',
+                      subtitle: 'If you logout then you login again using email and password',
+                      onConfirm: () {
+                        Navigator.pushReplacementNamed(context, RouteName.loginScreen);
+                      },
+                      context: context
+                  );
+                },
               ),
               AppSizeBox.height20,
             ],

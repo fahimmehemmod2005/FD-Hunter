@@ -47,14 +47,14 @@ class MyScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color(0xFF0E3B1E), // deep green (top left glow)
-            Color(0xFF071A0E), // dark green
-            Color(0xFF020703), // almost black (bottom)
+            Color(0xFF285A32),
+            Color(0xFF071A0E),
+            Color(0xFF020703),
           ],
         ),
       ),

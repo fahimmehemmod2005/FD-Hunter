@@ -1,4 +1,5 @@
 import 'package:fdahunter/app/routes/route_name.dart';
+import 'package:fdahunter/core/constant/app_images.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constant/app_color.dart';
@@ -18,13 +19,9 @@ class ProfileBar extends StatelessWidget {
           onTap: () {
             Navigator.pushNamed(context, RouteName.profileScreen);
           },
-          child: const CircleAvatar(
-            radius: 22,
-            backgroundColor: Colors.white,
-            child: Text(
-              '👨',
-              style: TextStyle(fontSize: 22),
-            ),
+          child: CircleAvatar(
+            radius: 25,
+            child: Image.asset(AppImages.profile,height: 52,width: 52,fit: BoxFit.cover,),
           ),
         ),
 

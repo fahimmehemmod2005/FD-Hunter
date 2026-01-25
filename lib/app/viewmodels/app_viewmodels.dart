@@ -10,6 +10,8 @@ import 'package:fdahunter/features/onboarding/viewmodel/onboarding_view_model.da
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
+import '../../features/profile/presentation/viewmodel/date_picker_view_model.dart';
+import '../../features/profile/presentation/viewmodel/gender_view_model.dart';
 import '../../features/subscription/viewmodel/payment_method_view_model.dart';
 
 class AppViewModels {
@@ -34,6 +36,10 @@ class AppViewModels {
       create: (_) => MainViewModel(),
     ),ChangeNotifierProvider<PaymentMethodViewModel>(
       create: (_) => PaymentMethodViewModel(),
+    ),ChangeNotifierProvider<DatePickerViewModel>(
+      create: (_) => DatePickerViewModel(),
+    ),ChangeNotifierProvider<GenderViewModel>(
+      create: (_) => GenderViewModel(),
     ),
   ];
 }
