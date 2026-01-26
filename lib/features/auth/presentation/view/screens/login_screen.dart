@@ -192,7 +192,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       label: "continue with google",
                       onTap: () {},
                     ),
-
                     AppSizeBox.height20,
 
                     // --------------- rich text ---------------
