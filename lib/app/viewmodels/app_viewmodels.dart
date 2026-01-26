@@ -18,27 +18,38 @@ class AppViewModels {
   static final List<SingleChildWidget> viewModels = [
     ChangeNotifierProvider<LoginViewModel>(
       create: (_) => LoginViewModel(),
-    ),ChangeNotifierProvider<CreateAccountViewModel>(
+    ),
+    ChangeNotifierProvider<CreateAccountViewModel>(
       create: (_) => CreateAccountViewModel(),
-    ),ChangeNotifierProvider<CategoryViewModel>(
+    ),
+    ChangeNotifierProvider<CategoryViewModel>(
       create: (_) => CategoryViewModel(),
-    ),ChangeNotifierProvider<OnboardingViewModel>(
+    ),
+    ChangeNotifierProvider<OnboardingViewModel>(
       create: (_) => OnboardingViewModel(),
-    ),ChangeNotifierProvider<ForgotViewModel>(
+    ),
+    ChangeNotifierProvider<ForgotViewModel>(
       create: (_) => ForgotViewModel(),
-    ),ChangeNotifierProvider<OtpViewModel>(
+    ),
+    ChangeNotifierProvider<OtpViewModel>(
       create: (_) => OtpViewModel(),
-    ),ChangeNotifierProvider<ResendButtonViewModel>(
+    ),
+    ChangeNotifierProvider<ResendButtonViewModel>(
       create: (_) => ResendButtonViewModel(),
-    ),ChangeNotifierProvider<ResetPasswordViewModel>(
+    ),
+    ChangeNotifierProvider<ResetPasswordViewModel>(
       create: (_) => ResetPasswordViewModel(),
-    ),ChangeNotifierProvider<MainViewModel>(
+    ),
+    ChangeNotifierProvider<MainViewModel>(
       create: (_) => MainViewModel(),
-    ),ChangeNotifierProvider<PaymentMethodViewModel>(
+    ),
+    ChangeNotifierProvider<PaymentMethodViewModel>(
       create: (_) => PaymentMethodViewModel(),
-    ),ChangeNotifierProvider<DatePickerViewModel>(
+    ),
+    ChangeNotifierProvider<DatePickerViewModel>(
       create: (_) => DatePickerViewModel(),
-    ),ChangeNotifierProvider<GenderViewModel>(
+    ),
+    ChangeNotifierProvider<GenderViewModel>(
       create: (_) => GenderViewModel(),
     ),
   ];
