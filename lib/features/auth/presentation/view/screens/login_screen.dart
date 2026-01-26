@@ -11,6 +11,7 @@ import 'package:fdahunter/features/auth/presentation/viewmodel/login_view_model.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../../../app/widgets/checkbox_forgot_row.dart';
 import '../../../../../app/widgets/main_button.dart';
 import '../../../../../app/widgets/title_subtitle_bar.dart';
 import '../widgets/divider_center_text.dart';
@@ -79,38 +80,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
 
                     // checkbox and forgot password button
-                    Row(
-                      children: [
-                        Checkbox(
-                          activeColor: AppColor.main,
-                          checkColor: Colors.black,
-                          shape: CircleBorder(),
-                          value: provider.isChecked,
-                          onChanged: provider.toggle,
-                        ),
-                        Text(
-                          'Remember Me',
-                          style: AppTextStyles.size14w400(
-                            color: Colors.white70,
+                    CheckboxForgotRow(
+                      checkValue: provider.isChecked,
+                      checkOnChanged: provider.toggle,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (builder) =>
+                                ForgotScreen(from: 'loginScreen'),
                           ),
-                        ),
-                        const Spacer(),
-                        TextButton(
-                          child: Text(
-                            'Forgot Password',
-                            style: TextStyle(color: CupertinoColors.systemRed),
-                          ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (builder) =>
-                                    ForgotScreen(from: 'loginScreen'),
-                              ),
-                            );
-                          },
-                        ),
-                      ],
+                        );
+                      },
                     ),
                     AppSizeBox.height10,
 
