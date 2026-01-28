@@ -115,7 +115,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   Widget build(BuildContext context) {
     return MyScaffold(
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,37 +131,29 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 "Recent",
                 style: AppTextStyles.size28w500(color: AppColor.title),
               ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: resent.map((resent){
-                      return NotificationCard(
-                        image: resent['image'],
-                        title: resent['title'],
-                        time: resent['time'],
-                        content: resent['content'],
-                      );
-                    }).toList(),
-                  ),
-                ),
+              Column(
+                children: resent.map((resent){
+                  return NotificationCard(
+                    image: resent['image'],
+                    title: resent['title'],
+                    time: resent['time'],
+                    content: resent['content'],
+                  );
+                }).toList(),
               ),
               Text(
                 "Earlier",
                 style: AppTextStyles.size28w500(color: AppColor.title),
               ),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: earlier.map((earlier){
-                      return NotificationCard(
-                        image: earlier['image'],
-                        title: earlier['title'],
-                        time: earlier['time'],
-                        content: earlier['content'],
-                      );
-                    }).toList(),
-                  ),
-                ),
+              Column(
+                children: earlier.map((earlier){
+                  return NotificationCard(
+                    image: earlier['image'],
+                    title: earlier['title'],
+                    time: earlier['time'],
+                    content: earlier['content'],
+                  );
+                }).toList(),
               ),
             ],
           ),

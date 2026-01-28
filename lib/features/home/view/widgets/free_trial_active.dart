@@ -67,7 +67,7 @@ class FreeTrailActiveCard extends StatelessWidget {
           SizedBox(height: 12.h),
           MainButton(
             backgroundColor: const Color(0xff0F1016),
-            label: "Unlock Full Access - \$99/month",
+            label: "Full Access-\$99/month",
             style: AppTextStyles.size16w700(color: AppColor.main),
             onTap: () {
               Navigator.pushNamed(context, RouteName.subscriptionScreen);

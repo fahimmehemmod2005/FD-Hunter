@@ -38,7 +38,7 @@ class _SuccessPaymentScreenState extends State<SuccessPaymentScreen> {
               textAlign: TextAlign.center,
                 style: AppTextStyles.size16w400(color: AppColor.label),
               ),
-              SizedBox(height: 250.0.h),
+              SizedBox(height: 200.0.h),
               MainButton(
                 label: 'Back to Home',
                 onTap: (){
